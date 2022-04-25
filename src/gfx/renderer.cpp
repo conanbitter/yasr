@@ -76,6 +76,7 @@ void Renderer::init(int width, int height) {
 
     m_frameSize.width = width;
     m_frameSize.height = height;
+    m_framebuffer = std::vector<Color>(width * height);
     m_isInitComplete = true;
 }
 

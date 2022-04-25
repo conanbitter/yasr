@@ -2,8 +2,8 @@
 #define _RENDERER_H
 
 #include <vector>
+#include "gfx.hpp"
 #include "gl/gl_core_3_2.hpp"
-#include "color.hpp"
 
 namespace Gfx {
 
