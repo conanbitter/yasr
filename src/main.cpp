@@ -13,6 +13,5 @@ int main() {
     App app;
     app.init();
     app.run();
-    std::cout << "Hello" << std::endl;
     return 0;
 }

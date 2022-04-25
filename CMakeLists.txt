@@ -8,6 +8,8 @@ add_executable(yasr
     src/main.cpp
     src/gfx/gfx.hpp
     src/gfx/app.cpp
+    src/gfx/color.hpp
+    src/gfx/color.cpp
 )
 
 if(MSVC)

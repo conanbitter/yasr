@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "color.hpp"
+
 namespace Gfx {
 
 struct Size {
