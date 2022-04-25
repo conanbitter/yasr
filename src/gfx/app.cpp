@@ -72,4 +72,8 @@ GfxApp::~GfxApp() {
     }
 }
 
+void error_message(const std::string error, const std::string message) {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, error.c_str(), message.c_str(), NULL);
+}
+
 }  // namespace Gfx

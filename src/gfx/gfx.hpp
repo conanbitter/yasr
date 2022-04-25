@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "color.hpp"
+#include "renderer.hpp"
 
 namespace Gfx {
 
@@ -44,6 +45,8 @@ class GfxApp {
     }
     void setSize(int width, int height, int scale);
 };
+
+void error_message(const std::string error, const std::string message);
 
 }  // namespace Gfx
 

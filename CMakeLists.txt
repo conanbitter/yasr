@@ -10,6 +10,11 @@ add_executable(yasr
     src/gfx/app.cpp
     src/gfx/color.hpp
     src/gfx/color.cpp
+    src/gfx/renderer.hpp
+    src/gfx/renderer.cpp
+    src/gfx/shaders.cpp
+    src/gfx/gl/gl_core_3_2.hpp
+    src/gfx/gl/gl_core_3_2.cpp
 )
 
 if(MSVC)
