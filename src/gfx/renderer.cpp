@@ -71,7 +71,7 @@ void Renderer::init(int width, int height) {
     gl::BindTexture(gl::TEXTURE_2D, m_texture);
     gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MIN_FILTER, gl::NEAREST);
     gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::NEAREST);
-    gl::TexImage2D(gl::TEXTURE_2D, 0, gl::RED, width, height, 0, gl::RED, gl::UNSIGNED_BYTE, nullptr);
+    gl::TexImage2D(gl::TEXTURE_2D, 0, gl::RGBA, width, height, 0, gl::RGBA, gl::UNSIGNED_BYTE, nullptr);
     gl::Uniform1i(tex_loc, 0);
 
     m_frameSize.width = width;
@@ -106,6 +106,7 @@ void Renderer::reshape(float width, float height) {
 
 void Renderer::present() {
     gl::BindTexture(gl::TEXTURE_2D, m_texture);
+    void* data = m_framebuffer.data();
     gl::TexSubImage2D(gl::TEXTURE_2D, 0, 0, 0, m_frameSize.width, m_frameSize.height, gl::RGBA, gl::UNSIGNED_BYTE, m_framebuffer.data());
     gl::UseProgram(m_program);
     gl::BindVertexArray(m_vao);
