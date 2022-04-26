@@ -41,7 +41,7 @@ class App : public Gfx::GfxApp {
         std::uniform_int_distribution<int> color(50, 255);
         std::mt19937 gen;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             particles.push_back(Particle{
                 width(gen),
                 height(gen),
@@ -51,9 +51,8 @@ class App : public Gfx::GfxApp {
         }
     }
 
-    void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3) {
+    void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3, Gfx::Color color) {
         Gfx::Color c;
-        int r = 0, g = 0, b = 0;
         int xmin = min(x1, x2, x3);
         int xmax = max(x1, x2, x3, 320);
         int ymin = min(y1, y2, y3);
@@ -61,22 +60,11 @@ class App : public Gfx::GfxApp {
 
         for (int y = ymin; y <= ymax; y++) {
             for (int x = xmin; x <= xmax; x++) {
-                if ((x1 - x2) * (y - y1) - (y1 - y2) * (x - x1) > 0) {
-                    r = 128;
-                } else {
-                    r = 0;
+                if ((x1 - x2) * (y - y1) - (y1 - y2) * (x - x1) > 0 &&
+                    (x2 - x3) * (y - y2) - (y2 - y3) * (x - x2) > 0 &&
+                    (x3 - x1) * (y - y3) - (y3 - y1) * (x - x3) > 0) {
+                    renderer.putPixel(x, y, color);
                 }
-                if ((x2 - x3) * (y - y2) - (y2 - y3) * (x - x2) > 0) {
-                    g = 128;
-                } else {
-                    g = 0;
-                }
-                if ((x3 - x1) * (y - y3) - (y3 - y1) * (x - x3) > 0) {
-                    b = 128;
-                } else {
-                    b = 0;
-                }
-                renderer.putPixel(x, y, Gfx::Color(r, g, b, 255));
             }
         }
         renderer.putPixel(x1, y1, 0xFF0000FF);
@@ -92,7 +80,16 @@ class App : public Gfx::GfxApp {
             particles[1].x,
             particles[1].y,
             particles[2].x,
-            particles[2].y);
+            particles[2].y,
+            0xF000FF);
+        drawTriangle(
+            particles[2].x,
+            particles[2].y,
+            particles[1].x,
+            particles[1].y,
+            particles[3].x,
+            particles[3].y,
+            0xF0FF);
         for (Particle& p : particles) {
             if ((p.x + p.dx) > 320.0 || (p.x + p.dx) < 0.0) {
                 p.dx = -p.dx;
