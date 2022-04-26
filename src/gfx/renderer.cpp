@@ -119,4 +119,8 @@ void Renderer::putPixel(int x, int y, Color color) {
     }
 }
 
+void Renderer::clear(const Color color) {
+    std::fill(m_framebuffer.begin(), m_framebuffer.end(), color);
+}
+
 }  // namespace Gfx

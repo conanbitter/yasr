@@ -62,6 +62,7 @@ void GfxApp::run() {
                     break;
             }
         }
+        onUpdate();
         gl::Clear(gl::COLOR_BUFFER_BIT);
         renderer.present();
         SDL_GL_SwapWindow(m_window);

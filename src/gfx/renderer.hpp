@@ -28,6 +28,7 @@ class Renderer {
     void reshape(float width, float height);
     void present();
     void putPixel(int x, int y, Color color);
+    void clear(const Color color);
 };
 
 GLuint compileShaderProgram(const std::string vertexShaderCode, const std::string fragmentShaderCode);

@@ -34,6 +34,8 @@ class GfxApp {
         }
     }
     void setSize(int width, int height, int scale);
+
+    virtual void onUpdate() {}
 };
 
 }  // namespace Gfx
